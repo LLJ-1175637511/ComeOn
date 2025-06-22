@@ -2,5 +2,23 @@
 <resources>
 
     <style name="Theme.ComeOn.AppCompat.Light" parent="Theme.AppCompat.Light.NoActionBar" />
+    <style name="FullScreenAndTransDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <!--    状态栏颜色    -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <!--    内容延伸到状态栏    -->
+        <item name="android:windowOverscan">true</item>
+        <!--    不显示默认的半透明黑色遮罩    -->
+        <!--                <item name="android:backgroundDimAmount">0</item>-->
+        <!--    非悬浮dialog 解除非全屏限制   -->
+        <item name="android:windowIsFloating">false</item>
+        <!--    边界不受window自带的内边距限制    -->
+        <item name="android:windowBackground">@color/transparent</item>
+    </style>
+
+    <!-- 自定义弹出/关闭动画   -->
+    <style name="BottomSheetDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/bottom_sheet_slide_up</item>
+        <item name="android:windowExitAnimation">@anim/bottom_sheet_slide_down</item>
+    </style>
 
 </resources>

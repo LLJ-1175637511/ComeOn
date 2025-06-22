@@ -47,6 +47,19 @@ dependencies {
     api "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}"
     api "androidx.appcompat:appcompat:${versions.appcompat}"
     api "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
+
     annotationProcessor("com.google.auto.service:auto-service:${versions.auto_service}")
     kapt("com.google.auto.service:auto-service:${versions.auto_service}")
+
+    api "com.google.android.material:material:${versions.material}"
+    //rxjava
+    api "io.reactivex.rxjava2:rxjava:${versions.rxjava}"
+    api "com.trello.rxlifecycle2:rxlifecycle:${versions.rx_lifecycle}"
+    api "com.trello.rxlifecycle2:rxlifecycle-android:${versions.rx_lifecycle}"
+
+    //fresco
+    api "com.facebook.fresco:fresco:${versions.fresco}"
+    //加载动态webp
+    api "com.facebook.fresco:animated-webp:${versions.fresco}"
+
 }
