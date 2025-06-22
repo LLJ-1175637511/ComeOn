@@ -3,7 +3,9 @@ package com.lh.comeon.demo
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.comeon.android.demo.databinding.ActivityTestBinding
+import com.lh.comeon.demo.dialog.TestBottomSheetDialog
 import com.lh.comeon.demo.spi.SpiDemoActivity
+import com.lh.comeon.demo.dialog.TestDialog
 
 class DemoActivity : AppCompatActivity() {
 
@@ -17,6 +19,12 @@ class DemoActivity : AppCompatActivity() {
         }
         binding.btSpiTest.setOnClickListener {
             startActivity(Intent(this, SpiDemoActivity::class.java))
+        }
+        binding.btBottomDialogTest.setOnClickListener {
+            TestBottomSheetDialog().show(supportFragmentManager, "TestBottomSheetDialog")
+        }
+        binding.btDialogTest.setOnClickListener {
+            TestDialog().show(supportFragmentManager, "TestDialog")
         }
     }
 }
