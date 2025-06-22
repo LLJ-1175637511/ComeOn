@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <activity
+            android:name="com.lh.comeon.demo.DemoActivity"
+            android:theme="@style/Theme.ComeOn.AppCompat.Light" />
+        <activity android:name="com.lh.comeon.demo.spi.SpiDemoActivity" />
+    </application>
+</manifest>

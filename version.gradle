@@ -1,0 +1,15 @@
+ext.versions = [:]
+
+versions.agp_version = "7.0.2"
+versions.kotlin = "1.7.20"
+versions.auto_service = "1.1.1"
+versions.compile_sdk = 33
+versions.min_sdk = 21
+versions.target_sdk = 33
+versions.version_code = 1
+versions.version_name = "1.0"
+versions.androidx_core = "1.1.0"
+versions.lifecycle = "2.2.0"
+versions.appcompat = "1.6.1"
+versions.constraintlayout = "2.0.1"
+
