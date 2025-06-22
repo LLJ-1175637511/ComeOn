@@ -5,26 +5,18 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/btSpiTest"
-        android:text="spi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <Button
-        android:id="@+id/btBottomDialogTest"
-        android:text="底部弹窗"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <Button
-        android:id="@+id/btDialogTest"
-        android:text="普通弹窗"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <Button
         android:id="@+id/btAnimatorTest"
-        android:text="动画demo"
+        android:text="AnimatorChainSet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.lh.comeon.demo.view.animator.EnterView
+        android:id="@+id/enterView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.lh.comeon.demo.view.animator.EnterView
+        android:id="@+id/enterViewNew"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

@@ -6,6 +6,7 @@ import com.comeon.android.demo.databinding.ActivityTestBinding
 import com.lh.comeon.demo.dialog.TestBottomSheetDialog
 import com.lh.comeon.demo.spi.SpiDemoActivity
 import com.lh.comeon.demo.dialog.TestDialog
+import com.lh.comeon.demo.view.animator.AnimatorDemoActivity
 
 class DemoActivity : AppCompatActivity() {
 
@@ -25,6 +26,9 @@ class DemoActivity : AppCompatActivity() {
         }
         binding.btDialogTest.setOnClickListener {
             TestDialog().show(supportFragmentManager, "TestDialog")
+        }
+        binding.btAnimatorTest.setOnClickListener {
+            startActivity(Intent(this, AnimatorDemoActivity::class.java))
         }
     }
 }
