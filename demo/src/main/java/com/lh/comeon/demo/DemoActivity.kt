@@ -7,6 +7,7 @@ import com.lh.comeon.demo.dialog.TestBottomSheetDialog
 import com.lh.comeon.demo.spi.SpiDemoActivity
 import com.lh.comeon.demo.dialog.TestDialog
 import com.lh.comeon.demo.view.animator.AnimatorDemoActivity
+import com.lh.comeon.demo.view.fresco.TestFrescoActivity
 
 class DemoActivity : AppCompatActivity() {
 
@@ -29,6 +30,9 @@ class DemoActivity : AppCompatActivity() {
         }
         binding.btAnimatorTest.setOnClickListener {
             startActivity(Intent(this, AnimatorDemoActivity::class.java))
+        }
+        binding.btFrescoTest.setOnClickListener {
+            startActivity(Intent(this, TestFrescoActivity::class.java))
         }
     }
 }

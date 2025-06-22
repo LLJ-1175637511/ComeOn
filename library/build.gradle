@@ -57,4 +57,9 @@ dependencies {
     api "com.trello.rxlifecycle2:rxlifecycle:${versions.rx_lifecycle}"
     api "com.trello.rxlifecycle2:rxlifecycle-android:${versions.rx_lifecycle}"
 
+    //fresco
+    api "com.facebook.fresco:fresco:${versions.fresco}"
+    //加载动态webp
+    api "com.facebook.fresco:animated-webp:${versions.fresco}"
+
 }

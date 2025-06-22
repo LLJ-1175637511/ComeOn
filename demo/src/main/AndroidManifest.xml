@@ -7,5 +7,6 @@
             android:theme="@style/Theme.ComeOn.AppCompat.Light" />
         <activity android:name="com.lh.comeon.demo.spi.SpiDemoActivity" />
         <activity android:name="com.lh.comeon.demo.view.animator.AnimatorDemoActivity" />
+        <activity android:name="com.lh.comeon.demo.view.fresco.TestFrescoActivity" />
     </application>
 </manifest>
