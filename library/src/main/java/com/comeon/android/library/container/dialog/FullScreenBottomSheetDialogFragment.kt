@@ -1,4 +1,4 @@
-package com.comeon.android.library.dialog
+package com.comeon.android.library.container.dialog
 
 import android.app.Dialog
 import android.os.Bundle

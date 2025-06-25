@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.comeon.android.demo.databinding.FragmentBottomSheetDialogTestBinding
-import com.comeon.android.library.dialog.FullScreenBottomSheetDialogFragment
+import com.comeon.android.library.container.dialog.FullScreenBottomSheetDialogFragment
 
 class TestBottomSheetDialog: FullScreenBottomSheetDialogFragment() {
 

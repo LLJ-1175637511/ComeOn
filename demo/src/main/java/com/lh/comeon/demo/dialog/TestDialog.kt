@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.comeon.android.demo.databinding.FragmentDialogTestBinding
-import com.comeon.android.library.dialog.FullScreenDialogFragment
+import com.comeon.android.library.container.dialog.FullScreenDialogFragment
 
 class TestDialog: FullScreenDialogFragment() {
 

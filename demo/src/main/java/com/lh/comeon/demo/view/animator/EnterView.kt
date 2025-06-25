@@ -9,7 +9,7 @@ import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.FrameLayout
 import androidx.core.view.isVisible
-import com.comeon.android.component.ui.animator.AnimatorChainSet
+import com.comeon.android.library.ui.animator.AnimatorChainSet
 import com.comeon.android.demo.databinding.ViewEnterTestBinding
 import com.comeon.android.library.ext.dp2px
 import com.comeon.android.library.utils.DisplayUtils
