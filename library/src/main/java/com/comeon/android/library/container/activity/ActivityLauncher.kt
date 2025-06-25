@@ -1,4 +1,4 @@
-package com.comeon.android.library.container
+package com.comeon.android.library.container.activity
 
 import android.app.Activity
 import android.app.Application

@@ -1,10 +1,10 @@
-package com.comeon.android.library.container
+package com.comeon.android.library.container.activity
 
 import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import com.comeon.android.library.kit.SafeStack
 
-open class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
 
     companion object {
 

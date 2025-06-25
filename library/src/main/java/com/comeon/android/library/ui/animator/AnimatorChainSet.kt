@@ -1,4 +1,4 @@
-package com.comeon.android.component.ui.animator
+package com.comeon.android.library.ui.animator
 
 import android.animation.Animator
 import android.animation.AnimatorSet
