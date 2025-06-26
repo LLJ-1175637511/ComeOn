@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.comeon.android.foundation.spi.InstanceProvider
 import com.comeon.android.app.databinding.ActivityMainBinding
+import com.comeon.android.app.home.HomeActivity
+import com.comeon.android.library.kit.MultipleClickActionHelper
 import com.lh.comeon.demo.DemoActivity
 import com.lh.comeon.demo.spi.IFood
 
@@ -15,6 +17,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityMainBinding
+
+    private val clickActionHelper = MultipleClickActionHelper(6) {
+        startActivity(Intent(this, HomeActivity::class.java))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,8 +34,11 @@ class MainActivity : AppCompatActivity() {
                 return "Food3"
             }
         })
-        binding.root.setOnClickListener {
+        binding.btTest.setOnClickListener {
             startActivity(Intent(this, DemoActivity::class.java))
+        }
+        binding.root.setOnClickListener {
+            clickActionHelper.registerClick()
         }
     }
 
