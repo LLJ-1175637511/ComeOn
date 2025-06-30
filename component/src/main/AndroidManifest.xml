@@ -3,5 +3,8 @@
 
     <application>
         <activity android:name="com.comeon.android.app.home.HomeActivity" />
+        <activity
+            android:name="com.comeon.android.app.home.video.ui.activity.PlayerActivity" >
+        </activity>
     </application>
 </manifest>
