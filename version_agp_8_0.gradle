@@ -9,3 +9,6 @@ versions.target_sdk = 33
 versions.constraintlayout = "2.1.4"
 versions.material = "1.9.0"
 versions.androidx_activity = "1.8.0"
+
+//third
+versions.exo_player = "1.4.0-alpha01"

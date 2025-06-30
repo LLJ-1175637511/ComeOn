@@ -2,6 +2,7 @@ package com.lh.comeon.demo
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
+import com.comeon.android.app.home.video.ui.activity.PlayerActivity
 import com.comeon.android.demo.databinding.ActivityTestBinding
 import com.lh.comeon.demo.dialog.TestBottomSheetDialog
 import com.lh.comeon.demo.spi.SpiDemoActivity
@@ -33,6 +34,9 @@ class DemoActivity : AppCompatActivity() {
         }
         binding.btFrescoTest.setOnClickListener {
             startActivity(Intent(this, TestFrescoActivity::class.java))
+        }
+        binding.btPlayerTest.setOnClickListener {
+            startActivity(Intent(this, PlayerActivity::class.java))
         }
     }
 }
