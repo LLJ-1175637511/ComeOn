@@ -20,7 +20,17 @@ object DisplayUtils {
         return (pPixels / density + 0.5).toInt()
     }
 
+    @JvmStatic
     fun dp2px(context: Context?, dp: Float): Int {
+        if (context == null) {
+            return 0
+        }
+        val density = context.resources.displayMetrics.density
+        return (dp * density + 0.5f).toInt()
+    }
+
+    @JvmStatic
+    fun dp2px(context: Context?, dp: Int): Int {
         if (context == null) {
             return 0
         }
