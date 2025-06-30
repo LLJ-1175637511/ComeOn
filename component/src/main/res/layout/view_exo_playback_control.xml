@@ -1,0 +1,345 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:background="@color/black">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_video_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="40dp"
+            android:background="@drawable/bg_video_top"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.comeon.android.library.ui.AutoHeightStatusBarView
+                android:id="@+id/statusBarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout_height="44dp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/statusBarView">
+
+                <ImageView
+                    android:id="@+id/btn_video_return"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/arrow_back_24"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:id="@+id/tv_video_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical"
+                    android:text="视频标题"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    tools:text="视频标题" />
+
+                <ImageView
+                    android:id="@+id/btn_set"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/more_horiz_24"
+                    app:tint="@color/white" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--        android:id="@+id/cl_gesture_type"-->
+        <!--        android:layout_width="120dp"-->
+        <!--        android:layout_height="120dp"-->
+        <!--        android:background="@color/black_60"-->
+        <!--        android:visibility="gone"-->
+        <!--        app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--        app:layout_constraintRight_toRightOf="parent"-->
+        <!--        app:layout_constraintTop_toTopOf="parent"-->
+        <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--        tools:visibility="visible">-->
+
+        <!--        <ImageView-->
+        <!--            android:id="@+id/img_gesture_type"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:src="@mipmap/volume_64_white"-->
+        <!--            android:visibility="gone"-->
+        <!--            app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--            app:layout_constraintRight_toRightOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            app:layout_constraintBottom_toTopOf="@+id/tv_msg1"-->
+        <!--            app:layout_constraintVertical_chainStyle="packed"-->
+        <!--            tools:visibility="visible"/>-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_msg1"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:visibility="gone"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/img_gesture_type"-->
+        <!--            app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--            app:layout_constraintRight_toRightOf="parent"-->
+        <!--            app:layout_constraintBottom_toTopOf="@+id/tv_msg2"-->
+        <!--            tools:visibility="visible"-->
+        <!--            tools:text="80%"/>-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_msg2"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:visibility="gone"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/tv_msg1"-->
+        <!--            app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--            app:layout_constraintRight_toRightOf="parent"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            tools:visibility="visible"-->
+        <!--            tools:text="80%"/>-->
+
+        <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_video_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="40dp"
+            android:paddingHorizontal="12dp"
+            android:background="@drawable/bg_video_bottom"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:id="@+id/llDuration"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                app:layout_constraintStart_toStartOf="@+id/fl_player"
+                app:layout_constraintBottom_toTopOf="@id/exo_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/exo_position"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    tools:text="00:00" />
+
+                <TextView
+                    android:id="@+id/tv_decoration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="/"
+                    android:layout_marginStart="4dp"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_e6"
+                    app:layout_constraintBottom_toBottomOf="@+id/bottom_line"
+                    app:layout_constraintLeft_toRightOf="@id/exo_position"
+                    app:layout_constraintTop_toTopOf="@+id/bottom_line" />
+
+                <TextView
+                    android:id="@+id/exo_duration"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_e6"
+                    tools:text="10:00" />
+
+            </LinearLayout>
+
+            <androidx.media3.ui.DefaultTimeBar
+                android:id="@id/exo_progress"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:layout_marginBottom="4dp"
+                app:buffered_color="@android:color/darker_gray"
+                app:layout_constraintStart_toStartOf="@id/fl_player"
+                app:layout_constraintBottom_toTopOf="@id/fl_player"
+                app:played_color="#5AB1F7"
+                app:unplayed_color="@android:color/black" />
+
+            <FrameLayout
+                android:id="@+id/fl_player"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginBottom="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:id="@+id/exo_pause"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/exo_icon_pause"
+                    android:visibility="gone"
+                    app:tint="@color/text_e6"
+                    tools:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/exo_play"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/exo_icon_play"
+                    app:tint="@color/text_e6" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/btn_video_speed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="倍速"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:tint="@color/white" />
+
+            </LinearLayout>
+
+            <!--            <com.comeon.android.app.home.video.ui.view.VerticalProgressLayout-->
+            <!--                android:id="@+id/vp_layout"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:visibility="gone"-->
+            <!--                app:layout_constraintBottom_toTopOf="@+id/btn_video_speed"-->
+            <!--                app:layout_constraintLeft_toLeftOf="@+id/btn_video_speed"-->
+            <!--                app:layout_constraintRight_toRightOf="@+id/btn_video_speed" />-->
+
+            <!--        <TextView-->
+            <!--            android:id="@+id/tv_volume"-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:text=""-->
+            <!--            android:textSize="12sp"-->
+            <!--            android:textColor="@color/text_e6"-->
+            <!--            android:visibility="gone"-->
+            <!--            app:layout_constraintBottom_toTopOf="@+id/btn_volume"-->
+            <!--            app:layout_constraintLeft_toLeftOf="@+id/btn_volume"-->
+            <!--            app:layout_constraintRight_toRightOf="@+id/btn_volume"/>-->
+
+            <!--        <com.example.video_play.widget.VerticalProgressView-->
+            <!--            android:id="@+id/vp_volume"-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:visibility="gone"-->
+            <!--            app:layout_constraintLeft_toLeftOf="@+id/btn_volume"-->
+            <!--            app:layout_constraintRight_toRightOf="@+id/btn_volume"-->
+            <!--            app:layout_constraintBottom_toTopOf="@+id/tv_volume"/>-->
+
+            <!--            <ImageView-->
+            <!--                android:id="@+id/btn_fullscreen"-->
+            <!--                android:layout_width="20dp"-->
+            <!--                android:layout_height="20dp"-->
+            <!--                android:layout_marginStart="12dp"-->
+            <!--                android:layout_marginEnd="16dp"-->
+            <!--                android:src="@drawable/fullscreen_24"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/bottom_line"-->
+            <!--                app:layout_constraintLeft_toRightOf="@id/btn_video_speed"-->
+            <!--                app:layout_constraintRight_toRightOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/bottom_line"-->
+            <!--                app:tint="@color/white" />-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--    视频设置界面-->
+        <LinearLayout
+            android:id="@+id/cl_video_set"
+            android:layout_width="160dp"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintLeft_toRightOf="parent">
+            <!--        <TextView-->
+            <!--            android:id="@+id/btn_screenshot_by_media"-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:layout_marginTop="16dp"-->
+            <!--            android:drawablePadding="16dp"-->
+            <!--            android:textSize="14sp"-->
+            <!--            android:textColor="@color/text_e6"-->
+            <!--            android:drawableLeft="@mipmap/screenshot_e6"-->
+            <!--            app:layout_goneMarginTop="16dp"-->
+            <!--            app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--            android:text="Media截图"/>-->
+
+            <!--        <TextView-->
+            <!--            android:id="@+id/btn_screenshot_by_ffmpeg"-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:layout_marginTop="16dp"-->
+            <!--            android:drawablePadding="16dp"-->
+            <!--            android:textSize="14sp"-->
+            <!--            android:textColor="@color/text_e6"-->
+            <!--            android:drawableLeft="@mipmap/screenshot_e6"-->
+            <!--            app:layout_goneMarginTop="16dp"-->
+            <!--            app:layout_constraintTop_toBottomOf="@+id/btn_screenshot_by_media"-->
+            <!--            app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--            android:text="FFmpeg截图"/>-->
+
+            <!--        <TextView-->
+            <!--            android:id="@+id/btn_screenshot_by_glide"-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:layout_marginTop="16dp"-->
+            <!--            android:drawablePadding="16dp"-->
+            <!--            android:textSize="14sp"-->
+            <!--            android:textColor="@color/text_e6"-->
+            <!--            android:drawableLeft="@mipmap/screenshot_e6"-->
+            <!--            app:layout_goneMarginTop="16dp"-->
+            <!--            app:layout_constraintTop_toBottomOf="@+id/btn_screenshot_by_ffmpeg"-->
+            <!--            app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--            android:text="Glide截图"/>-->
+
+            <TextView
+                android:id="@+id/btn_screenshot_by_glide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:drawablePadding="16dp"
+                android:text="Glide截图"
+                android:textColor="@color/text_e6"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_screenshot_by_ffmpeg"
+                app:layout_goneMarginTop="16dp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
