@@ -32,4 +32,6 @@ dependencies {
     //加载动态webp
     api "com.facebook.fresco:animated-webp:${versions.fresco}"
 
+    api "androidx.activity:activity-ktx:${versions.androidx_activity}"
+    api "androidx.activity:activity:${versions.androidx_activity}"
 }
