@@ -1,6 +1,10 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
+    apply from: file('gradle/agp_upgrade_disable.gradle')
     apply from: file('version.gradle')
+    if (disableNewAGP) {
+        apply from: file('version_agp_8_0.gradle')
+    }
 
     repositories {
         google()

@@ -1,0 +1,11 @@
+//project
+versions.agp_version = "8.0.0"
+versions.kotlin = "1.8.0"
+versions.compile_sdk = 34
+versions.min_sdk = 21
+versions.target_sdk = 33
+
+//lib
+versions.constraintlayout = "2.1.4"
+versions.material = "1.9.0"
+versions.androidx_activity = "1.8.0"
