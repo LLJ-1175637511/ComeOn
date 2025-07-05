@@ -1,18 +1,19 @@
 package com.comeon.android.app.home.video.ui.view
 
 import android.content.Context
-import android.net.Uri
 import android.util.AttributeSet
-import androidx.annotation.OptIn
+import android.util.Log
 import androidx.core.view.isVisible
 import androidx.media3.common.MediaItem
 import androidx.media3.common.PlaybackException
+import androidx.media3.common.PlaybackParameters
 import androidx.media3.common.Player
-import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerControlView
 import androidx.media3.ui.PlayerView
 import androidx.media3.ui.R
+import com.comeon.android.app.home.video.ui.kit.OnLongTouchCallback
+import com.comeon.android.app.home.video.ui.kit.VideoOnTouchListener
 import com.comeon.android.component.databinding.ViewExoPlaybackControlBinding
 import com.comeon.android.library.utils.ToastUtils
 
@@ -21,6 +22,10 @@ class ExoPlayerView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ): PlayerView(context, attrs, defStyleAttr) {
+
+    companion object {
+        private const val TAG = "ExoPlayerView"
+    }
 
     private val playerControlView = findViewById<PlayerControlView>(R.id.exo_controller)
     val binding = ViewExoPlaybackControlBinding.bind(playerControlView)
@@ -82,8 +87,22 @@ class ExoPlayerView @JvmOverloads constructor(
                     binding.exoPause.isVisible = false
                 }
             }
+
+            override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters) {
+                Log.d(TAG, "Playback parameters changed: ${playbackParameters.speed}x")
+            }
         })
-//        binding.exoProgress.scr(false)
+        setOnTouchListener(VideoOnTouchListener(object : OnLongTouchCallback {
+            override fun onStart() {
+                player.playbackParameters = player.playbackParameters.withSpeed(2.0f)
+                ToastUtils.showToast(context, "已切换到2.0倍速")
+            }
+
+            override fun onActionUp() {
+                player.playbackParameters = player.playbackParameters.withSpeed(1.0f)
+                ToastUtils.showToast(context, "已切换到1.0倍速")
+            }
+        }))
     }
 
     fun play(path: String) {
