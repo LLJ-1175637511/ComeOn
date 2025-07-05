@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.media3.common.PlaybackException
+import androidx.media3.common.PlaybackParameters
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
 import com.comeon.android.app.home.video.utils.Logger
@@ -27,7 +28,7 @@ class PlayerFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentPlayerBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -36,6 +37,9 @@ class PlayerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.videoPlayerView.initializePlayer(player)
         player.addListener(object : Player.Listener {
+            override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters) {
+                Logger.d(TAG, "Playback parameters changed: ${playbackParameters.speed}x")
+            }
             override fun onPlayerError(error: PlaybackException) {
                 Logger.e(TAG, "Player error: ${error.message}")
             }
