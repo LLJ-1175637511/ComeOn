@@ -15,6 +15,7 @@ import androidx.media3.ui.R
 import com.comeon.android.app.home.video.ui.kit.OnLongTouchCallback
 import com.comeon.android.app.home.video.ui.kit.VideoOnTouchListener
 import com.comeon.android.component.databinding.ViewExoPlaybackControlBinding
+import com.comeon.android.library.ui.widget.ImageCheckView
 import com.comeon.android.library.utils.ToastUtils
 
 class ExoPlayerView @JvmOverloads constructor(
@@ -92,7 +93,7 @@ class ExoPlayerView @JvmOverloads constructor(
                 Log.d(TAG, "Playback parameters changed: ${playbackParameters.speed}x")
             }
         })
-        setOnTouchListener(VideoOnTouchListener(object : OnLongTouchCallback {
+        playerControlView.setOnTouchListener(VideoOnTouchListener(object : OnLongTouchCallback {
             override fun onStart() {
                 player.playbackParameters = player.playbackParameters.withSpeed(2.0f)
                 ToastUtils.showToast(context, "已切换到2.0倍速")
@@ -103,7 +104,16 @@ class ExoPlayerView @JvmOverloads constructor(
                 ToastUtils.showToast(context, "已切换到1.0倍速")
             }
         }))
-        binding.
+        setControllerVisibilityListener(ControllerVisibilityListener {
+
+        })
+        //设置初始状态为解锁状态
+        binding.ivLockImg.setChecked(false)
+        binding.ivLockImg.setCheckListener { _, isChecked ->
+            binding.flControllerMask.isVisible = isChecked
+            if (isChecked) hideController()
+            else showController()
+        }
     }
 
     fun play(path: String) {
