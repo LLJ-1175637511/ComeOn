@@ -53,6 +53,6 @@ class VideoOnTouchListener(
                 }
             }
         }
-        return true
+        return false
     }
 }
