@@ -17,7 +17,7 @@
             android:background="@drawable/bg_video_top"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.comeon.android.library.ui.AutoHeightStatusBarView
+            <com.comeon.android.library.ui.widget.AutoHeightStatusBarView
                 android:id="@+id/statusBarView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -342,4 +342,20 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/flControllerMask"
+        android:clickable="false"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.comeon.android.library.ui.widget.ImageCheckView
+        android:id="@+id/ivLockImg"
+        android:src="@drawable/select_player_lock_state"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="12dp"
+        android:padding="4dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"/>
 </FrameLayout>
