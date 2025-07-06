@@ -342,4 +342,14 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/ivLockImg"
+        android:src="@drawable/lock_24"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="12dp"
+        android:padding="4dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"/>
+
 </FrameLayout>
