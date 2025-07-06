@@ -103,6 +103,7 @@ class ExoPlayerView @JvmOverloads constructor(
                 ToastUtils.showToast(context, "已切换到1.0倍速")
             }
         }))
+        binding.
     }
 
     fun play(path: String) {
