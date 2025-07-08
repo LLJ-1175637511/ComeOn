@@ -5,3 +5,4 @@ include ':component'
 include ':library'
 include ':foundation'
 
+include ':lite_player'

@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.comeon.android.foundation.spi.InstanceProvider
 import com.comeon.android.app.databinding.ActivityMainBinding
-import com.comeon.android.app.home.HomeActivity
+import com.comeon.android.component.home.HomeActivity
 import com.comeon.android.library.kit.MultipleClickActionHelper
 import com.lh.comeon.demo.DemoActivity
 import com.lh.comeon.demo.spi.IFood
@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         binding.root.setOnClickListener {
             clickActionHelper.registerClick()
         }
+        startActivity(Intent(this, DemoActivity::class.java))
     }
 
 }

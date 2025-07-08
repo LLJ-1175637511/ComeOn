@@ -2,7 +2,7 @@ package com.lh.comeon.demo
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import com.comeon.android.app.home.video.ui.activity.PlayerActivity
+import com.comeon.android.component.home.video.ui.activity.PlayerActivity
 import com.comeon.android.demo.databinding.ActivityTestBinding
 import com.lh.comeon.demo.dialog.TestBottomSheetDialog
 import com.lh.comeon.demo.spi.SpiDemoActivity
