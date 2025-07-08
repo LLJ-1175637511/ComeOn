@@ -4,11 +4,14 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.comeon.android.app.home.video.ui.view.ExoPlayerView
+<!--    <com.comeon.android.app.home.video.ui.view.MyPlayerView-->
+<!--        android:id="@+id/videoPlayerView"-->
+<!--        app:controller_layout_id="@layout/view_exo_playback_control"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
+
+    <com.google.media.lite_player.core.ExoPlayerView
         android:id="@+id/videoPlayerView"
-        app:resize_mode="fit"
-        app:surface_type="texture_view"
-        app:controller_layout_id="@layout/view_exo_playback_control"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

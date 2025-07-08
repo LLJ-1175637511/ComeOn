@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application>
-        <activity android:name="com.comeon.android.app.home.HomeActivity" />
+        <activity android:name=".home.HomeActivity" />
         <activity
             android:screenOrientation="landscape"
-            android:name="com.comeon.android.app.home.video.ui.activity.PlayerActivity" >
+            android:name=".home.video.ui.activity.PlayerActivity" >
         </activity>
     </application>
 </manifest>

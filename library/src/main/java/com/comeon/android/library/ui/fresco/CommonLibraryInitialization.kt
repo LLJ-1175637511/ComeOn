@@ -6,7 +6,7 @@ import com.facebook.drawee.backends.pipeline.Fresco
 import com.google.auto.service.AutoService
 
 /**
- * @author liulinjie @ Zhihu Inc.
+ * @author liulinjie 
  * @since 2025-05-21
  */
 @AutoService(ApplicationLauncherInterface::class)

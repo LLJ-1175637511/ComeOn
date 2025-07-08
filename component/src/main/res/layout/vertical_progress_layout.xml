@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <com.comeon.android.app.home.video.ui.view.VerticalProgressView
+    <com.comeon.android.component.home.video.ui.view.VerticalProgressView
         android:id="@+id/vp_volume"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

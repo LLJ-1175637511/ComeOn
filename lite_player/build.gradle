@@ -1,0 +1,15 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.google.media.lite_player'
+    apply from: file('../gradle/lib_common_config.gradle')
+}
+
+dependencies {
+    api project(':library')
+    api "androidx.media3:media3-exoplayer:${versions.exo_player}"
+    api "androidx.media3:media3-ui:${versions.exo_player}"
+}
