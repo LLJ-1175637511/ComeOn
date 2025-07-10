@@ -1,17 +1,21 @@
 package com.comeon.android.library.utils
 
 import android.content.Context
+import android.content.res.Configuration
 
 object DisplayUtils {
 
+    @JvmStatic
     fun getScreenWidthPixels(context: Context?): Int {
         return context?.resources?.displayMetrics?.widthPixels ?: 0
     }
 
+    @JvmStatic
     fun getScreenHeightPixels(context: Context?): Int {
         return context?.resources?.displayMetrics?.heightPixels ?: 0
     }
 
+    @JvmStatic
     fun px2dp(context: Context?, pPixels: Float): Int {
         if (context == null) {
             return 0
@@ -38,10 +42,14 @@ object DisplayUtils {
         return (dp * density + 0.5f).toInt()
     }
 
+    @JvmStatic
     fun sp2px(context: Context?, sp: Float): Int {
         return if(context == null) {
             0
         } else (sp * context.resources.displayMetrics.scaledDensity + 0.5f).toInt()
     }
+
+    @JvmStatic
+    fun isLandscape(context: Context) =  context.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
 }
