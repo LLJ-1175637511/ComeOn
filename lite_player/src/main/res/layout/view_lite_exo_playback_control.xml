@@ -70,6 +70,27 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/iv_loading_view"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:padding="12dp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.media.lite_player.ui.BouncingBallsLoader
+            android:id="@+id/iv_loading_view2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@color/black"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_loading_view" />
+
         <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
         <!--        android:id="@+id/cl_gesture_type"-->
         <!--        android:layout_width="120dp"-->
@@ -352,5 +373,5 @@
         android:layout_gravity="center_vertical"
         android:layout_marginStart="12dp"
         android:padding="4dp"
-        android:src="@drawable/select_player_lock_state"/>
+        android:src="@drawable/select_player_lock_state" />
 </FrameLayout>

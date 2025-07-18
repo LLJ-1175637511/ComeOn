@@ -8,8 +8,10 @@ import androidx.media3.common.PlaybackParameters
 import androidx.media3.common.Player
 import com.comeon.android.app.home.video.ui.kit.OnLongTouchCallback
 import com.comeon.android.app.home.video.ui.kit.VideoOnTouchListener
+import com.comeon.android.library.ui.fresco.ext.setDynamicImageUrl
 import com.comeon.android.library.utils.DisplayUtils
 import com.comeon.android.library.utils.ToastUtils
+import com.google.media.lite_player.R
 import com.google.media.lite_player.api.controller.ControllerActionListener
 import com.google.media.lite_player.api.controller.OnViewVisibleListener
 import com.google.media.lite_player.api.controller.IPlayerControllerVisibleManager
@@ -53,6 +55,8 @@ open class PlayerController(
             playerControllerAnimManager.hideControllerAnim(false)
             lockAnimHelper.setVisible(isVisible = false, useAnim = false)
         }
+        binding.ivLoadingView.setDynamicImageUrl("https://picx.zhimg.com/v2-2d471ed671d93af0c1c53e5e16684287.webp")
+//        binding.ivLoadingView.setDynamicImageUrl(R.drawable.loading_run)
     }
 
     override fun registerControllerCallbacks(controllerActionListener: ControllerActionListener) {
