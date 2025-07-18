@@ -70,6 +70,16 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <com.google.media.lite_player.ui.PlayerLoadingView
+            android:id="@+id/iv_loading_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
         <!--        android:id="@+id/cl_gesture_type"-->
         <!--        android:layout_width="120dp"-->
@@ -352,5 +362,5 @@
         android:layout_gravity="center_vertical"
         android:layout_marginStart="12dp"
         android:padding="4dp"
-        android:src="@drawable/select_player_lock_state"/>
+        android:src="@drawable/select_player_lock_state" />
 </FrameLayout>

@@ -8,14 +8,17 @@ import androidx.media3.common.PlaybackParameters
 import androidx.media3.common.Player
 import com.comeon.android.app.home.video.ui.kit.OnLongTouchCallback
 import com.comeon.android.app.home.video.ui.kit.VideoOnTouchListener
+import com.comeon.android.library.ui.fresco.ext.setDynamicImageUrl
 import com.comeon.android.library.utils.DisplayUtils
 import com.comeon.android.library.utils.ToastUtils
+import com.google.media.lite_player.R
 import com.google.media.lite_player.api.controller.ControllerActionListener
 import com.google.media.lite_player.api.controller.OnViewVisibleListener
 import com.google.media.lite_player.api.controller.IPlayerControllerVisibleManager
 import com.google.media.lite_player.api.controller.IPlayerController
 import com.google.media.lite_player.databinding.ViewLiteExoPlaybackControlBinding
 import com.google.media.lite_player.kit.AutoHideVisibleAlphaAnimHelper
+import com.google.media.lite_player.kit.VisibleAlphaAnimHelper
 
 sealed class ControllerAction {
     class Close : ControllerAction()
@@ -38,10 +41,18 @@ open class PlayerController(
         const val ANIM_DURATION_MILS: Long = 300L
     }
 
+    /**
+     * Lock anim helper
+     */
     private val lockAnimHelper = AutoHideVisibleAlphaAnimHelper(
         view = binding.ivLockImg,
         duration = ANIM_DURATION_MILS,
         autoHideMils = ANIM_AUTO_HIDE_MILS
+    )
+
+    private val loadingAnimHelper = VisibleAlphaAnimHelper(
+        view = binding.ivLoadingView,
+        duration = ANIM_DURATION_MILS
     )
 
     private val controllerActionListeners = mutableMapOf<String, ControllerActionListener>()
@@ -98,6 +109,7 @@ open class PlayerController(
                 binding.exoPlay.isVisible = true
                 binding.exoPause.isVisible = false
                 ToastUtils.showToast(binding.root.context, "播放错误: ${error.message}")
+                loadingAnimHelper.setVisible(false)
             }
 
             override fun onPlaybackStateChanged(playbackState: Int) {
@@ -108,11 +120,13 @@ open class PlayerController(
                     }
 
                     Player.STATE_BUFFERING -> {
+                        loadingAnimHelper.setVisible(true)
                         // 正在缓冲数据
                         Log.d(TAG, "Player is buffering")
                     }
 
                     Player.STATE_READY -> {
+                        loadingAnimHelper.setVisible(false, false)
                         // 可以开始播放
                         Log.d(TAG, "Player is ready")
                     }
