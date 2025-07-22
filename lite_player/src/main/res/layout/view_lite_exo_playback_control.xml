@@ -70,16 +70,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.media.lite_player.ui.PlayerLoadingView
-            android:id="@+id/iv_loading_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
         <!--        android:id="@+id/cl_gesture_type"-->
         <!--        android:layout_width="120dp"-->
@@ -354,6 +344,31 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.media.lite_player.ui.PlayerLoadingView
+            android:id="@+id/iv_loading_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/iv_error_view"
+            android:visibility="gone"
+            layout="@layout/view_player_error_fullscreen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
+
+    </FrameLayout>
 
     <com.comeon.android.library.ui.widget.ImageCheckView
         android:id="@+id/ivLockImg"

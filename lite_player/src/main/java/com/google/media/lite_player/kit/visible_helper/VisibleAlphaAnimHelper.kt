@@ -1,17 +1,16 @@
-package com.google.media.lite_player.kit
+package com.google.media.lite_player.kit.visible_helper
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.view.View
 import androidx.core.animation.doOnEnd
-import androidx.core.view.isVisible
 
 /**
  * @author liulinjie @ Zhihu Inc.
  * @since 2025-07-10
  */
-open class VisibleAlphaAnimHelper(private val view: View, private val duration: Long) {
+open class VisibleAlphaAnimHelper(private val view: View, private val duration: Long, private val visibleDelegate: OnViewVisibleDelegate = ViewVisibleDelegate(view)): OnViewVisibleDelegate by visibleDelegate {
 
     init {
         view.addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
@@ -29,46 +28,52 @@ open class VisibleAlphaAnimHelper(private val view: View, private val duration: 
         })
     }
 
-    private var targetVisibility: Int = view.visibility
+    private var targetVisibility: Int = getVisibility()
 
     protected open val showAnim by lazy {
         ofAlpha(0f, 1f).also {
-            it.doOnEnd { view.visibility = targetVisibility }
+            it.doOnEnd { setVisibility(targetVisibility) }
         }
     }
 
     protected open val hideAnim by lazy {
         ofAlpha(1f, 0f).also {
-            it.doOnEnd { view.visibility = targetVisibility }
+            it.doOnEnd { setVisibility(targetVisibility) }
         }
     }
 
-    open fun setVisibility(visibility: Int, useAnim: Boolean = true) {
+    open fun setVisibility(visibility: Int, useAnim: Boolean) {
         if (!useAnim) {
-            hideAnim.cancel()
-            showAnim.cancel()
-            view.visibility = visibility
+            cancelAnim()
+            setVisibility(visibility)
             return
         }
-        if (visibility == view.visibility) return
+        if (visibility == getVisibility()) return
         targetVisibility = visibility
         if (visibility == View.VISIBLE) {
-            hideAnim.cancel()
-            showAnim.start()
+            showAnim()
         } else if (visibility == View.GONE || visibility == View.INVISIBLE) {
-            showAnim.cancel()
-            hideAnim.start()
+            hideAnim()
         }
     }
 
-    fun getVisibility(): Int = view.visibility
-
-    fun isVisible(): Boolean {
-        return view.isVisible || showAnim.isRunning
+    open fun showAnim() {
+        hideAnim.cancel()
+        showAnim.start()
     }
 
-    fun setVisible(isVisible: Boolean, useAnim: Boolean = true) {
-        setVisibility(if (isVisible) View.VISIBLE else View.GONE, useAnim)
+    open fun hideAnim() {
+        showAnim.cancel()
+        hideAnim.start()
+    }
+
+    open fun cancelAnim() {
+        hideAnim.cancel()
+        showAnim.cancel()
+    }
+
+    open fun setVisible(visible: Boolean, useAnim: Boolean) {
+        setVisibility(if (visible) View.VISIBLE else View.GONE, useAnim)
     }
 
     private fun ofAlpha(startValue: Float, endValue: Float): ObjectAnimator {
@@ -85,5 +90,4 @@ open class VisibleAlphaAnimHelper(private val view: View, private val duration: 
             })
         }
     }
-
 }

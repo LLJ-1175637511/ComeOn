@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="text_e6">#E6E6E6</color>
+
+    <color name="player_controller_mask_bg">#26FFFFFF</color>
 </resources>

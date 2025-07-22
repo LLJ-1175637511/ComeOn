@@ -1,9 +1,8 @@
-package com.google.media.lite_player.kit
+package com.google.media.lite_player.kit.visible_helper
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.view.View
-import com.comeon.android.library.utils.ViewUtils
 
 /**
  * @author liulinjie @ Zhihu Inc.

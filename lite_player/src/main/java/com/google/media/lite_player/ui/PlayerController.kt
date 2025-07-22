@@ -8,17 +8,15 @@ import androidx.media3.common.PlaybackParameters
 import androidx.media3.common.Player
 import com.comeon.android.app.home.video.ui.kit.OnLongTouchCallback
 import com.comeon.android.app.home.video.ui.kit.VideoOnTouchListener
-import com.comeon.android.library.ui.fresco.ext.setDynamicImageUrl
 import com.comeon.android.library.utils.DisplayUtils
 import com.comeon.android.library.utils.ToastUtils
-import com.google.media.lite_player.R
 import com.google.media.lite_player.api.controller.ControllerActionListener
 import com.google.media.lite_player.api.controller.OnViewVisibleListener
 import com.google.media.lite_player.api.controller.IPlayerControllerVisibleManager
 import com.google.media.lite_player.api.controller.IPlayerController
 import com.google.media.lite_player.databinding.ViewLiteExoPlaybackControlBinding
-import com.google.media.lite_player.kit.AutoHideVisibleAlphaAnimHelper
-import com.google.media.lite_player.kit.VisibleAlphaAnimHelper
+import com.google.media.lite_player.kit.visible_helper.AutoHideVisibleAlphaAnimHelper
+import com.google.media.lite_player.kit.visible_helper.VisibleAlphaAnimHelper
 
 sealed class ControllerAction {
     class Close : ControllerAction()
@@ -62,7 +60,7 @@ open class PlayerController(
     init {
         if (isHideControllerOnInit) {
             playerControllerAnimManager.hideControllerAnim(false)
-            lockAnimHelper.setVisible(isVisible = false, useAnim = false)
+            lockAnimHelper.setVisible(visible = false, useAnim = false)
         }
     }
 
@@ -110,6 +108,7 @@ open class PlayerController(
                 binding.exoPause.isVisible = false
                 ToastUtils.showToast(binding.root.context, "播放错误: ${error.message}")
                 loadingAnimHelper.setVisible(false)
+                binding.ivErrorView.root.isVisible = true
             }
 
             override fun onPlaybackStateChanged(playbackState: Int) {
@@ -136,6 +135,7 @@ open class PlayerController(
                         Log.d(TAG, "Player has ended playback")
                     }
                 }
+//                binding.ivErrorView.root.isVisible = false
             }
 
             override fun onIsPlayingChanged(isPlaying: Boolean) {
