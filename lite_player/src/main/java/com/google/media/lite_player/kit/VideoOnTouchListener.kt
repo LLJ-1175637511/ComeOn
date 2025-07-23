@@ -1,7 +1,8 @@
-package com.comeon.android.app.home.video.ui.kit
+package com.google.media.lite_player.kit
 
 import android.view.MotionEvent
 import android.view.View
+import com.comeon.android.app.home.video.ui.kit.OnLongTouchCallback
 import java.util.Timer
 import java.util.TimerTask
 
@@ -10,7 +11,7 @@ import java.util.TimerTask
  * @since 2025-07-05
  */
 class VideoOnTouchListener(
-    private var onLongTouchCallback: OnLongTouchCallback ?= null
+    private var onLongTouchCallback: OnLongTouchCallback?= null
 ): View.OnTouchListener {
     //识别长按
     private val LONG_PRESS_DURATION = 800L // 长按持续时间，单位毫秒
@@ -53,6 +54,6 @@ class VideoOnTouchListener(
                 }
             }
         }
-        return true
+        return isLongPressed
     }
 }

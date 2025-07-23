@@ -1,20 +1,20 @@
 package com.google.media.lite_player.core
 
 import android.content.Context
-import android.os.Looper
 import android.util.AttributeSet
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.annotation.OptIn
 import androidx.media3.common.MediaItem
-import androidx.media3.common.Player
-import androidx.media3.common.VideoSize
 import androidx.media3.common.util.UnstableApi
 import com.google.media.lite_player.api.ui.ISurfaceViewDelegate
 import com.google.media.lite_player.api.ui.onVideoSizeChanged
 import com.google.media.lite_player.databinding.LiteExoPlayerViewBinding
-import com.google.media.lite_player.api.controller.IPlayerController
-import com.google.media.lite_player.ui.PlayerController
+import com.google.media.lite_player.plugin.BasePlayerPlugin
+import com.google.media.lite_player.plugin.ViewPlayerPlugin
+import com.google.media.lite_player.plugin_imp.VideoSizeChangePlugin
 
 class ExoPlayerView @JvmOverloads constructor(
     context: Context,
@@ -34,9 +34,13 @@ class ExoPlayerView @JvmOverloads constructor(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
             )
         )
+        addPlugin(
+            VideoSizeChangePlugin(
+                onSizeChangeCallback = { videoSize ->
+                    surfaceViewDelegate.onVideoSizeChanged(player, videoSize)
+                }
+            ))
     }
-
-    private val componentListener = ComponentListener()
 
     @OptIn(UnstableApi::class)
     override fun buildSurfaceViewDelegate(): ISurfaceViewDelegate {
@@ -46,27 +50,55 @@ class ExoPlayerView @JvmOverloads constructor(
         }
     }
 
-    override fun buildPlayerController(): IPlayerController {
-        return PlayerController(binding.exoController)
+    override fun addPlugin(plugin: BasePlayerPlugin) {
+        when (plugin) {
+            is ViewPlayerPlugin -> {
+                addViewPlugin(plugin)
+            }
+        }
+        super.addPlugin(plugin)
     }
 
-    override fun initializePlayer(player: Player?) {
-        player ?: return
-        //校验主线程
-        if (Thread.currentThread() != Looper.getMainLooper().thread) {
-            throw IllegalStateException("setPlayer must be called on the main thread")
+    private fun addViewPlugin(plugin: ViewPlayerPlugin) {
+        val container: FrameLayout = when (plugin.viewPriority()) {
+            ViewPlayerPlugin.ViewPriority.LOW -> {
+                binding.playerLowContainer
+            }
+
+            ViewPlayerPlugin.ViewPriority.MIDDLE -> {
+                binding.playerMidContainer
+            }
+
+            ViewPlayerPlugin.ViewPriority.HIGH -> {
+                binding.playerHighContainer
+            }
         }
-        if (player == this.player) return
-        //释放旧的播放器
-        this.player?.removeListener(componentListener)
+        container.addView(plugin.onCreateView(context), plugin.layoutParams() ?: defaultLayoutParam())
+    }
 
-        surfaceViewDelegate.setPlayer(player)
+    private fun defaultLayoutParam() = LayoutParams(
+        LayoutParams.MATCH_PARENT,
+        LayoutParams.MATCH_PARENT
+    ).also {
+        it.gravity = Gravity.CENTER
+    }
 
-        this.player = player
+    fun stop() {
+        player?.apply {
+            stop()
+        }
+    }
 
-        controller.setPlayer(player)
+    fun pause() {
+        player?.apply {
+            pause()
+        }
+    }
 
-        player.addListener(componentListener)
+    fun resume() {
+        player?.apply {
+            play()
+        }
     }
 
     fun play(path: String) {
@@ -76,12 +108,6 @@ class ExoPlayerView @JvmOverloads constructor(
             }
             setMediaItem(MediaItem.fromUri(path))
             prepare()
-        }
-    }
-
-    private inner class ComponentListener : Player.Listener {
-        override fun onVideoSizeChanged(videoSize: VideoSize) {
-            surfaceViewDelegate.onVideoSizeChanged(player, videoSize)
         }
     }
 

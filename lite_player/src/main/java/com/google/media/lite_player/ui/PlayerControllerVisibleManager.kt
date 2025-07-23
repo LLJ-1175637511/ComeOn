@@ -4,6 +4,8 @@ import android.animation.ObjectAnimator
 import android.view.View
 import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
+import androidx.core.view.doOnDetach
+import com.comeon.android.library.ext.doOnViewDetachFromWindow
 import com.comeon.android.library.ui.animator.AnimatorChainSet
 import com.google.media.lite_player.R
 import com.google.media.lite_player.api.controller.IPlayerControllerVisibleManager
@@ -88,14 +90,9 @@ open class PlayerControllerVisibleManager(
     }
 
     init {
-        binding.root.addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
-            override fun onViewAttachedToWindow(v: View) {}
-
-            override fun onViewDetachedFromWindow(v: View) {
-                release()
-                binding.root.removeOnAttachStateChangeListener(this)
-            }
-        })
+        binding.root.doOnViewDetachFromWindow {
+            release()
+        }
     }
 
     private fun ofTranslationY(startValue: Float, endValue: Float, target: View): ObjectAnimator {

@@ -129,7 +129,6 @@
             android:layout_height="@dimen/player_bottom_bar_height"
             android:background="@drawable/bg_video_bottom"
             android:paddingHorizontal="12dp"
-            android:paddingTop="40dp"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <LinearLayout
@@ -148,6 +147,7 @@
                     android:layout_marginStart="8dp"
                     android:textColor="@color/white"
                     android:textStyle="bold"
+                    android:text="00:00"
                     tools:text="00:00" />
 
                 <TextView
@@ -156,7 +156,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:text="/"
-                    android:textColor="@color/text_e6"
+                    android:textColor="@color/white"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/bottom_line"
@@ -168,9 +168,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
-                    android:textColor="@color/text_e6"
+                    android:textColor="@color/white"
                     android:textSize="12sp"
                     android:textStyle="bold"
+                    android:text="00:00"
                     tools:text="10:00" />
 
             </LinearLayout>
@@ -344,31 +345,6 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.google.media.lite_player.ui.PlayerLoadingView
-            android:id="@+id/iv_loading_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <include
-            android:id="@+id/iv_error_view"
-            android:visibility="gone"
-            layout="@layout/view_player_error_fullscreen"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center" />
-
-    </FrameLayout>
 
     <com.comeon.android.library.ui.widget.ImageCheckView
         android:id="@+id/ivLockImg"
